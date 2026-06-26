@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/metadb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+      SPRING_DATASOURCE_USERNAME: metacoding
+      SPRING_DATASOURCE_PASSWORD: metacoding1234
+    networks:
+      - ex07-network
+
+  db:
+    build:
+      context: ./db
+    networks:
+      - ex07-network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    networks:
+      - ex07-network
+
+networks:
+  ex07-network:

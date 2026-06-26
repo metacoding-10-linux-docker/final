@@ -1,0 +1,21 @@
+services:
+  app1:
+    build:
+      context: ./app1
+    networks:
+      - ex06-network
+  app2:
+    build:
+      context: ./app2
+    networks:
+      - ex06-network
+  lb:
+    build:
+      context: ./lb
+    ports:
+      - 80:80
+    networks:
+      - ex06-network
+
+networks:
+  ex06-network:
